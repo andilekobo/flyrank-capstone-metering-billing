@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 
-from app.api.routes import generate
-
+from app.api.routes import billing, generate, usage, webhooks
 
 app = FastAPI(
     title="Usage Metering & Billing API",
@@ -9,5 +8,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
-
 app.include_router(generate.router)
+app.include_router(usage.router)
+app.include_router(webhooks.router)
+app.include_router(billing.router)

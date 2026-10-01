@@ -1,0 +1,44 @@
+name: flyrank-capstone-metering-billing
+title: Usage Metering & Billing Engine
+track: Backend
+difficulty: Medium
+status: complete
+
+description: >
+  A backend usage metering and billing engine that records API and AI token
+  usage, enforces subscription quotas, calculates usage costs, and synchronizes
+  subscription state through Stripe-compatible webhook events.
+
+stack:
+  language: Python
+  framework: FastAPI
+  database: PostgreSQL
+  orm: SQLAlchemy
+  migrations: Alembic
+  payments: Stripe-compatible mock integration
+  containers: Docker
+  orchestration: Docker Compose
+
+features:
+  - Multi-tenant usage metering
+  - API call quota enforcement
+  - AI token quota enforcement
+  - Idempotent usage recording
+  - Monthly usage aggregation
+  - AI token cost calculation
+  - Mock Stripe Checkout
+  - Webhook signature verification
+  - Webhook event deduplication
+  - Subscription synchronization
+  - PostgreSQL persistence
+  - Docker Compose PostgreSQL environment
+
+required_files:
+  - README.md
+  - EVIDENCE.md
+  - BUILDLOG.md
+  - capstone.yaml
+  - .env.example
+
+repository:
+  public: true

@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: metering-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: metering_billing
+      POSTGRES_USER: metering_user
+      POSTGRES_PASSWORD: metering_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: metering-api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://metering_user:metering_password@postgres:5432/metering_billing
+      MOCK_WEBHOOK_SECRET: mock_webhook_secret
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
